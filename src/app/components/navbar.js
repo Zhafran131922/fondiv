@@ -32,9 +32,9 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
         className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${darkMode
           ? "bg-gray-900 border-gray-700"
           : "bg-white border-white"
-          } ${isScrolled
-            ? "shadow-md py-2 border-b"
-            : "py-4 border-b-0"
+          } ${isScrolled 
+            ? "shadow-md py-2"
+            : "py-5"
           }`}
       >
         <div className="flex justify-between items-center px-6 max-w-6xl mx-auto">
