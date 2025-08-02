@@ -1,26 +1,40 @@
 import Link from 'next/link';
 
-const Footer = () => {
+const Footer = ({ darkMode = false }) => {
   return (
-    <footer className="bg-[#f8f5ff] text-gray-700 p-8">
+    <footer className={`p-8 transition-colors duration-300 ${
+      darkMode ? 'bg-gray-800 text-gray-300' : 'bg-[#f8f5ff] text-gray-700'
+    }`}>
       <div className="max-w-6xl mx-auto">
-        {/* Bagian Atas */}
+        {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand Description */}
           <div className="col-span-1">
-            <h1 className="text-2xl font-bold mb-4">Foundiv</h1>
-            <p className="text-sm">
+            <h1 className={`text-2xl font-bold mb-4 ${
+              darkMode ? 'text-white' : 'text-gray-800'
+            }`}>
+              Foundiv
+            </h1>
+            <p className={`text-sm ${
+              darkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}>
               There are many variations of passages of Lorem Ipsum available.
             </p>
           </div>
 
           {/* Pages */}
           <div>
-            <h2 className="font-semibold mb-4 text-lg">Pages</h2>
+            <h2 className={`font-semibold mb-4 text-lg ${
+              darkMode ? 'text-white' : 'text-gray-800'
+            }`}>
+              Pages
+            </h2>
             <ul className="space-y-2">
               {['Name', 'About Us', 'Services', 'Products'].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="hover:text-blue-600 transition-colors">
+                  <Link href="#" className={`hover:text-purple-400 transition-colors ${
+                    darkMode ? 'text-gray-400' : 'text-gray-600'
+                  }`}>
                     {item}
                   </Link>
                 </li>
@@ -30,11 +44,17 @@ const Footer = () => {
 
           {/* Socials */}
           <div>
-            <h2 className="font-semibold mb-4 text-lg">Socials</h2>
+            <h2 className={`font-semibold mb-4 text-lg ${
+              darkMode ? 'text-white' : 'text-gray-800'
+            }`}>
+              Socials
+            </h2>
             <ul className="space-y-2">
-              {['Instagram', 'Link', 'Think'].map((item) => (
+              {['Instagram', 'LinkedIn', 'Twitter'].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="hover:text-blue-600 transition-colors">
+                  <Link href="#" className={`hover:text-purple-400 transition-colors ${
+                    darkMode ? 'text-gray-400' : 'text-gray-600'
+                  }`}>
                     {item}
                   </Link>
                 </li>
@@ -44,7 +64,11 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h2 className="font-semibold mb-4 text-lg">Services</h2>
+            <h2 className={`font-semibold mb-4 text-lg ${
+              darkMode ? 'text-white' : 'text-gray-800'
+            }`}>
+              Services
+            </h2>
             <ul className="space-y-2">
               {[
                 'Web Development',
@@ -54,7 +78,9 @@ const Footer = () => {
                 'Web Security'
               ].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="hover:text-blue-600 transition-colors">
+                  <Link href="#" className={`hover:text-purple-400 transition-colors ${
+                    darkMode ? 'text-gray-400' : 'text-gray-600'
+                  }`}>
                     {item}
                   </Link>
                 </li>
@@ -63,20 +89,26 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Garis Pemisah */}
-        <hr className="border-gray-300 my-6" />
+        {/* Divider */}
+        <hr className={`my-6 ${
+          darkMode ? 'border-gray-700' : 'border-gray-300'
+        }`} />
 
-        {/* Bagian Bawah */}
+        {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <p>Copyright © 2025 Fondiv</p>
+            <p className={darkMode ? 'text-gray-400' : 'text-gray-600'}>
+              Copyright © {new Date().getFullYear()} Fondiv
+            </p>
           </div>
           <div className="flex space-x-4">
             {['Privacy Policy', 'Terms of Service', 'Go To Top'].map((item) => (
               <Link 
                 key={item} 
                 href="#"
-                className="hover:text-blue-600 transition-colors text-sm"
+                className={`hover:text-purple-400 transition-colors text-sm ${
+                  darkMode ? 'text-gray-400' : 'text-gray-600'
+                }`}
               >
                 {item}
               </Link>
