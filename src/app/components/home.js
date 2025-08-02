@@ -1,7 +1,8 @@
 "use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
+import Navbar from "./navbar"
 // Ikon user
 const UserIcon = () => (
   <svg
@@ -53,203 +54,223 @@ const ArrowIcon = () => (
 );
 
 export default function Home() {
-  return (
-    <section className="flex flex-col items-center justify-start min-h-screen text-center px-4 sm:px-6 py-12 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      {/* Container utama dengan lebar maksimum */}
-      <div className="w-full max-w-7xl mx-auto">
-        {/* Background elements */}
-        <motion.div
-          className="absolute inset-0 -z-10 overflow-hidden"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="absolute top-10 left-10 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-20 left-1/2 w-80 h-80 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
-        </motion.div>
+  const [darkMode, setDarkMode] = useState(false);
 
-        {/* Content container */}
-        <div className="flex flex-col items-center w-full">
-          {/* Heading */}
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setDarkMode(isDark);
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+  return (
+    <div
+      className={`min-h-screen transition-colors duration-300 ${
+        darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-800"
+      }`}
+    >
+        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <section className="flex flex-col items-center  justify-start min-h-screen text-center px-4 sm:px-6 py-12 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+        <div className="w-full max-w-7xl mx-auto">
+          {/* Background elements */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="w-full max-w-3xl mb-8 px-4"
+            className="absolute inset-0 -z-10 overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
           >
-            <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
+            <div className="absolute top-10 left-10 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+            <div className="absolute top-40 right-10 w-72 h-72 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+            <div className="absolute bottom-20 left-1/2 w-80 h-80 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+          </motion.div>
+
+          {/* Content container */}
+          <div className="flex flex-col items-center w-full">
+            {/* Heading */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.6 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="w-full max-w-3xl mb-8 px-4"
             >
-              <span className="bg-gradient-to-r from-[#1f0057] to-[#b13781] bg-clip-text text-transparent">
-                Bisnis Anda Muncul Pertama Saat Mereka Googling
-              </span>
-            </motion.h2>
-
-            <motion.p
-              className="text-gray-600 text-base sm:text-lg md:text-xl mx-auto"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              Kami bantu Anda tampil di halaman pertama lewat website yang cepat,
-              elegan, dan SEO-friendly.
-            </motion.p>
-          </motion.div>
-
-          {/* CTA & Arrow animation */}
-          <motion.div
-            className="flex flex-col items-center mb-10 w-full"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow:
-                  "0 10px 25px -5px rgba(59, 130, 246, 0.5), 0 10px 10px -5px rgba(59, 130, 246, 0.1)",
-              }}
-              whileTap={{ scale: 0.98 }}
-              className="relative overflow-hidden bg-gradient-to-r from-[#1f0057] to-[#b13781] text-white font-medium px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 group flex items-center gap-2"
-            >
-              <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-out group-hover:scale-x-100 z-0" />
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
-                Konsultasi Gratis
-              </span>
-              <motion.div
-                animate={{ x: [0, 4, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="relative z-10"
+              <motion.h2
+                className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.6 }}
               >
-                <ArrowIcon />
-              </motion.div>
-            </motion.button>
+                <span className="bg-gradient-to-r from-[#1f0057] to-[#b13781] bg-clip-text text-transparent">
+                  Bisnis Anda Muncul Pertama Saat Mereka Googling
+                </span>
+              </motion.h2>
 
-            <motion.div
-              className="mt-4 flex items-center gap-2 text-sm text-gray-500 flex-wrap justify-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-            >
-              <span>Tidak perlu login</span>
-              <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-              <span>Bisa diakses dari semua perangkat</span>
+              <motion.p
+                className="text-gray-600 text-base sm:text-lg md:text-xl mx-auto"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+              >
+                Kami bantu Anda tampil di halaman pertama lewat website yang
+                cepat, elegan, dan SEO-friendly.
+              </motion.p>
             </motion.div>
-          </motion.div>
 
-          {/* Laptop Image & Floating Cards */}
-          <div className="relative w-full max-w-4xl mx-auto px-4">
+            {/* CTA & Arrow animation */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.7,
-                delay: 0.4,
-                ease: "easeOut",
-              }}
-              className="relative"
+              className="flex flex-col items-center mb-10 w-full"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
             >
-              {/* Floating effect for laptop */}
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow:
+                    "0 10px 25px -5px rgba(59, 130, 246, 0.5), 0 10px 10px -5px rgba(59, 130, 246, 0.1)",
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="relative overflow-hidden bg-gradient-to-r from-[#1f0057] to-[#b13781] text-white font-medium px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 group flex items-center gap-2"
+              >
+                <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-out group-hover:scale-x-100 z-0" />
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
+                  Konsultasi Gratis
+                </span>
+                <motion.div
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="relative z-10"
+                >
+                  <ArrowIcon />
+                </motion.div>
+              </motion.button>
+
               <motion.div
+                className="mt-4 flex items-center gap-2 text-sm text-gray-500 flex-wrap justify-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8, duration: 0.5 }}
+              >
+                <span>Tidak perlu login</span>
+                <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+                <span>Bisa diakses dari semua perangkat</span>
+              </motion.div>
+            </motion.div>
+
+            {/* Laptop Image & Floating Cards */}
+            <div className="relative w-full max-w-4xl mx-auto px-4">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{
-                  y: [0, -15, 0],
+                  opacity: 1,
+                  scale: 1,
+                  y: 0,
                 }}
                 transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
+                  duration: 0.7,
+                  delay: 0.4,
+                  ease: "easeOut",
+                }}
+                className="relative"
+              >
+                {/* Floating effect for laptop */}
+                <motion.div
+                  animate={{
+                    y: [0, -15, 0],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <div className="relative aspect-video w-full">
+                    <Image
+                      src="/assets/laptop.png"
+                      alt="Modern laptop showing dashboard"
+                      fill
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Glow effect behind laptop */}
+                <motion.div
+                  className="absolute inset-0 -z-10 bg-blue-500 rounded-xl blur-2xl opacity-20"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 0.2, scale: 1 }}
+                  transition={{ delay: 0.6, duration: 1 }}
+                />
+              </motion.div>
+
+              {/* Floating Card 1 - Posisi disesuaikan */}
+              <motion.div
+                className="absolute top-[15%] right-[0%] sm:right-[5%] bg-white rounded-xl shadow-lg p-3 flex items-center gap-2 border border-gray-100 backdrop-blur-sm bg-opacity-80"
+                initial={{ opacity: 0, y: 40, x: 20 }}
+                animate={{ opacity: 1, y: 0, x: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.6,
+                  type: "spring",
+                  stiffness: 120,
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
                 }}
               >
-                <div className="relative aspect-video w-full">
-                  <Image
-                    src="/assets/laptop.png"
-                    alt="Modern laptop showing dashboard"
-                    fill
-                    className="object-contain"
-                    priority
-                  />
+                <motion.div
+                  className="bg-blue-100 p-2 rounded-lg"
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <UserIcon />
+                </motion.div>
+                <div className="text-left">
+                  <p className="font-medium text-xs text-gray-700">
+                    Kami Online
+                  </p>
+                  <p className="font-bold text-sm text-gray-900">24/7</p>
                 </div>
               </motion.div>
 
-              {/* Glow effect behind laptop */}
+              {/* Floating Card 2 - Posisi disesuaikan */}
               <motion.div
-                className="absolute inset-0 -z-10 bg-blue-500 rounded-xl blur-2xl opacity-20"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 0.2, scale: 1 }}
-                transition={{ delay: 0.6, duration: 1 }}
-              />
-            </motion.div>
-
-            {/* Floating Card 1 - Posisi disesuaikan */}
-            <motion.div
-              className="absolute top-[15%] right-[0%] sm:right-[5%] bg-white rounded-xl shadow-lg p-3 flex items-center gap-2 border border-gray-100 backdrop-blur-sm bg-opacity-80"
-              initial={{ opacity: 0, y: 40, x: 20 }}
-              animate={{ opacity: 1, y: 0, x: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.6,
-                type: "spring",
-                stiffness: 120,
-              }}
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <motion.div
-                className="bg-blue-100 p-2 rounded-lg"
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute bottom-[25%] left-[0%] sm:left-[5%] bg-white rounded-xl shadow-lg p-3 flex items-center gap-2 border border-gray-100 backdrop-blur-sm bg-opacity-80"
+                initial={{ opacity: 0, y: 40, x: -20 }}
+                animate={{ opacity: 1, y: 0, x: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.7,
+                  type: "spring",
+                  stiffness: 120,
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+                }}
               >
-                <UserIcon />
+                <motion.div
+                  className="bg-amber-100 p-2 rounded-lg"
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                >
+                  <StarIcon />
+                </motion.div>
+                <div className="text-left">
+                  <p className="font-medium text-xs text-gray-700">
+                    Customer Rating
+                  </p>
+                  <p className="font-bold text-sm text-gray-900">4.9/5.0</p>
+                </div>
               </motion.div>
-              <div className="text-left">
-                <p className="font-medium text-xs text-gray-700">Kami Online</p>
-                <p className="font-bold text-sm text-gray-900">24/7</p>
-              </div>
-            </motion.div>
-
-            {/* Floating Card 2 - Posisi disesuaikan */}
-            <motion.div
-              className="absolute bottom-[25%] left-[0%] sm:left-[5%] bg-white rounded-xl shadow-lg p-3 flex items-center gap-2 border border-gray-100 backdrop-blur-sm bg-opacity-80"
-              initial={{ opacity: 0, y: 40, x: -20 }}
-              animate={{ opacity: 1, y: 0, x: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.7,
-                type: "spring",
-                stiffness: 120,
-              }}
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <motion.div
-                className="bg-amber-100 p-2 rounded-lg"
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-              >
-                <StarIcon />
-              </motion.div>
-              <div className="text-left">
-                <p className="font-medium text-xs text-gray-700">
-                  Customer Rating
-                </p>
-                <p className="font-bold text-sm text-gray-900">4.9/5.0</p>
-              </div>
-            </motion.div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

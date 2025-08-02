@@ -29,7 +29,8 @@ export default function AboutUs() {
 
   return (
     <section className="bg-gradient-to-br from-[#f8f5ff] to-white w-full py-20 px-4 sm:px-6 lg:px-12 overflow-hidden">
-      <motion.div
+
+     <motion.div
         className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
         variants={container}
         initial="hidden"
