@@ -98,7 +98,7 @@ export default function ContactUs({ darkMode }) {
           <h1 className={`text-4xl md:text-5xl font-bold mb-6 ${
             darkMode ? "text-white" : "text-gray-900"
           }`}>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1f0057] to-[#b13781]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1f0057] to-[#b13781] dark:from-fuchsia-600 dark:to-[#b13781]">
               Hubungi Kami
             </span>
           </h1>

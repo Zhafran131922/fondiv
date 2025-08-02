@@ -106,7 +106,7 @@ export default function Home({ darkMode }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.6 }}
               >
-                <span className="bg-gradient-to-r from-[#1f0057] to-[#b13781] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#1f0057] to-[#b13781] dark:from-fuchsia-600 dark:to-[#b13781] bg-clip-text text-transparent">
                   Bisnis Anda Muncul Pertama Saat Mereka Googling
                 </span>
               </motion.h2>
