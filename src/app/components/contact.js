@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Mail,
   Phone,
@@ -52,7 +52,7 @@ const fadeRight = {
   },
 };
 
-export default function ContactUs() {
+export default function ContactUs({ darkMode }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -61,6 +61,11 @@ export default function ContactUs() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -79,30 +84,43 @@ export default function ContactUs() {
   };
 
   return (
-    <section className="bg-white py-20 px-4 overflow-hidden">
+    <section className={`py-20 px-4 overflow-hidden transition-colors duration-300 ${
+      darkMode ? "bg-gray-900" : "bg-white"
+    }`}>
       <motion.div
         variants={container}
         initial="hidden"
-        animate="show"
+        animate={isClient ? "show" : "hidden"}
         className="max-w-6xl mx-auto"
       >
         {/* Judul dan Deskripsi */}
         <motion.div variants={fadeInUp} className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className={`text-4xl md:text-5xl font-bold mb-6 ${
+            darkMode ? "text-white" : "text-gray-900"
+          }`}>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1f0057] to-[#b13781]">
               Hubungi Kami
             </span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className={`text-xl max-w-2xl mx-auto ${
+            darkMode ? "text-gray-300" : "text-gray-600"
+          }`}>
             Konsultasikan kebutuhan website Anda dengan tim kami
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Informasi Kontak */}
-          <motion.div variants={fadeLeft} className="bg-white rounded-2xl shadow-xl p-8 md:p-10">
+          <motion.div 
+            variants={fadeLeft} 
+            className={`rounded-2xl shadow-xl p-8 md:p-10 ${
+              darkMode ? "bg-gray-800" : "bg-white"
+            }`}
+          >
             <div className="mb-10">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              <h2 className={`text-2xl font-bold mb-6 flex items-center gap-2 ${
+                darkMode ? "text-white" : "text-gray-900"
+              }`}>
                 <div className="w-2 h-8 bg-gradient-to-b from-[#1f0057] to-[#b13781] rounded-full"></div>
                 Informasi Kontak
               </h2>
@@ -127,7 +145,7 @@ export default function ContactUs() {
                   {
                     icon: <Clock className="w-6 h-6" />,
                     title: "Jam Operasional",
-                    value: "All Fu*king Time",
+                    value: "Senin - Jumat, 09:00 - 17:00",
                   },
                 ].map((item, index) => (
                   <motion.div
@@ -135,10 +153,20 @@ export default function ContactUs() {
                     variants={fadeInUp}
                     className="flex items-start gap-4"
                   >
-                    <div className="bg-indigo-100 p-3 rounded-lg text-indigo-600">{item.icon}</div>
+                    <div className={`p-3 rounded-lg ${
+                      darkMode ? "bg-indigo-900 text-indigo-300" : "bg-indigo-100 text-indigo-600"
+                    }`}>
+                      {item.icon}
+                    </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">{item.title}</h3>
-                      <p className="text-gray-600">{item.value}</p>
+                      <h3 className={`font-semibold ${
+                        darkMode ? "text-white" : "text-gray-900"
+                      }`}>
+                        {item.title}
+                      </h3>
+                      <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+                        {item.value}
+                      </p>
                     </div>
                   </motion.div>
                 ))}
@@ -146,7 +174,9 @@ export default function ContactUs() {
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              <h2 className={`text-2xl font-bold mb-6 flex items-center gap-2 ${
+                darkMode ? "text-white" : "text-gray-900"
+              }`}>
                 <div className="w-2 h-8 bg-gradient-to-b from-[#1f0057] to-[#b13781] rounded-full"></div>
                 Ikuti Kami
               </h2>
@@ -186,7 +216,10 @@ export default function ContactUs() {
           </motion.div>
 
           {/* Form Kontak */}
-          <motion.div variants={fadeRight} className="bg-gradient-to-br from-[#1f0057] to-[#b13781] rounded-2xl shadow-xl p-8 md:p-10">
+          <motion.div 
+            variants={fadeRight} 
+            className="bg-gradient-to-br from-[#1f0057] to-[#b13781] rounded-2xl shadow-xl p-8 md:p-10"
+          >
             <h2 className="text-2xl font-bold text-white mb-8">Kirim Pesan</h2>
 
             <form onSubmit={handleSubmit} className="space-y-6">

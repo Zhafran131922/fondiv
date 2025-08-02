@@ -59,7 +59,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           <ul className="hidden md:flex gap-8 text-base font-medium">
             {[
               { name: "Home", icon: <FaHome className="inline mr-2" />, href: "/" },
-              { name: "Portofolio", icon: <FaBriefcase className="inline mr-2" />, href: "/portfolio" },
+              { name: "Portfolio", icon: <FaBriefcase className="inline mr-2" />, href: "/portfolio" },
               { name: "Products", icon: <FaBox className="inline mr-2" />, href: "/products" },
             ].map((item) => {
               const isActive = activeTab === item.name.toLowerCase();

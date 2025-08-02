@@ -107,9 +107,11 @@ const services = [
   },
 ];
 
-export default function OurService() {
+export default function OurService({ darkMode }) {
   return (
-    <section className="bg-white w-full py-20 px-4 sm:px-8">
+    <section className={`w-full py-20 px-4 sm:px-8 transition-colors duration-300 ${
+      darkMode ? "bg-gray-900" : "bg-white"
+    }`}>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -120,7 +122,11 @@ export default function OurService() {
           className="text-center mb-16"
         >
           <motion.span
-            className="inline-block bg-[#1f0057]  text-white px-4 py-1 rounded-full text-sm font-medium mb-4"
+            className={`inline-block px-4 py-1 rounded-full text-sm font-medium mb-4 ${
+              darkMode 
+                ? "bg-[#b13781] text-white" 
+                : "bg-[#1f0057] text-white"
+            }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -128,18 +134,22 @@ export default function OurService() {
             Layanan Kami
           </motion.span>
           <motion.h2
-            className="text-3xl sm:text-4xl font-bold mb-6 text-gray-900 max-w-3xl mx-auto"
+            className={`text-3xl sm:text-4xl font-bold mb-6 max-w-3xl mx-auto ${
+              darkMode ? "text-white" : "text-gray-900"
+            }`}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
             Tak Sekadar Jasa, Tapi&nbsp;
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1f0057] to-[#b13781]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1f0057] to-[#b13781] dark:from-fuchsia-700 dark:to-[#b13781]">
               Komitmen Kami untuk Kesuksesan Anda
             </span>
           </motion.h2>
           <motion.p
-            className="text-gray-600 text-lg max-w-2xl mx-auto"
+            className={`text-lg max-w-2xl mx-auto ${
+              darkMode ? "text-gray-300" : "text-gray-600"
+            }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -152,7 +162,7 @@ export default function OurService() {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <ServiceCard key={index} service={service} index={index} />
+            <ServiceCard key={index} service={service} index={index} darkMode={darkMode} />
           ))}
         </div>
       </div>
@@ -160,7 +170,7 @@ export default function OurService() {
   );
 }
 
-function ServiceCard({ service, index }) {
+function ServiceCard({ service, index, darkMode }) {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -177,20 +187,30 @@ function ServiceCard({ service, index }) {
       transition={{ duration: 0.6, delay }}
     >
       <motion.div
-        className="h-full bg-white rounded-xl shadow-md overflow-hidden group border border-gray-100 hover:border-gray-200 transition-all duration-300 relative"
+        className={`h-full rounded-xl shadow-md overflow-hidden group border transition-all duration-300 relative ${
+          darkMode 
+            ? "bg-gray-800 border-gray-700 hover:border-gray-600" 
+            : "bg-white border-gray-100 hover:border-gray-200"
+        }`}
         whileHover={{
           y: -10,
         }}
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
         {/* Gradient overlay on hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+        <div className={`absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 ${
+          darkMode 
+            ? "from-gray-800 to-gray-700" 
+            : "from-white to-gray-50"
+        }`}></div>
 
         <div className="p-7 h-full flex flex-col relative z-10">
           {/* Icon */}
           <div className="mb-5">
             <motion.div
-              className="w-14 h-14 bg-[#1f0057] rounded-lg flex items-center justify-center text-white group-hover:from-[#280070] group-hover:to-[#c1408a] transition-all duration-300"
+              className={`w-14 h-14 rounded-lg flex items-center justify-center text-white group-hover:from-[#280070] group-hover:to-[#c1408a] transition-all duration-300 ${
+                darkMode ? "bg-[#b13781]" : "bg-[#1f0057]"
+              }`}
               whileHover={{
                 rotate: 5,
                 scale: 1.05,
@@ -202,22 +222,30 @@ function ServiceCard({ service, index }) {
           </div>
 
           {/* Title with gradient text */}
-          <h3 className="text-xl font-bold mb-3 bg-clip-text text-transparent bg-[#1f0057] group-hover:from-[#280070] group-hover:to-[#c1408a] transition-all duration-300">
+          <h3 className={`text-xl font-bold mb-3 bg-clip-text text-transparent ${
+            darkMode ? "from-fuchsia-500 to-[#b13781]" : "from-[#1f0057] to-[#b13781]"
+          } bg-gradient-to-r`}>
             {service.title}
           </h3>
 
           {/* Description */}
-          <p className="text-gray-600 mb-6 flex-grow group-hover:text-gray-700 transition-colors">
+          <p className={`mb-6 flex-grow transition-colors ${
+            darkMode ? "text-gray-300 group-hover:text-gray-200" : "text-gray-600 group-hover:text-gray-700"
+          }`}>
             {service.description}
           </p>
 
           {/* Learn More button */}
           <div className="flex justify-between items-center">
-            <span className="text-sm font-medium text-gray-500 group-hover:text-gray-700 transition-colors">
+            <span className={`text-sm font-medium transition-colors ${
+              darkMode ? "text-gray-400 group-hover:text-gray-300" : "text-gray-500 group-hover:text-gray-700"
+            }`}>
               Pelajari lebih lanjut
             </span>
             <motion.div
-              className="w-8 h-8 bg-[#1f0057] rounded-full flex items-center justify-center group-hover:from-[#280070] group-hover:to-[#c1408a] transition-all duration-300"
+              className={`w-8 h-8 rounded-full flex items-center justify-center group-hover:from-[#280070] group-hover:to-[#c1408a] transition-all duration-300 ${
+                darkMode ? "bg-[#b13781]" : "bg-[#1f0057]"
+              }`}
               whileHover={{
                 rotate: 45,
               }}
@@ -243,7 +271,9 @@ function ServiceCard({ service, index }) {
 
         {/* Gradient border animation on hover */}
         <motion.div
-          className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1f0057] to-[#b13781] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+          className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ${
+            darkMode ? "from-blue-700 to-purple-600" : "from-[#1f0057] to-[#b13781]"
+          }`}
           initial={{ scaleX: 0 }}
         />
       </motion.div>

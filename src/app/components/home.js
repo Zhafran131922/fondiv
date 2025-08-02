@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Navbar from "./navbar"
+import Navbar from "./navbar";
+
 // Ikon user
 const UserIcon = () => (
   <svg
@@ -53,27 +54,20 @@ const ArrowIcon = () => (
   </svg>
 );
 
-export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
+export default function Home({ darkMode }) {
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setDarkMode(isDark);
-    }
-  }, []);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
   return (
-    <div
-      className={`min-h-screen transition-colors duration-300 ${
-        darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-800"
-      }`}
+    <div className={`min-h-screen transition-colors duration-300 ${
+      darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-800"
+    }`}
     >
-        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <section className="flex flex-col items-center  justify-start min-h-screen text-center px-4 sm:px-6 py-12 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+      
+      <section className={`flex flex-col items-center justify-start min-h-screen text-center px-4 sm:px-6 py-12 ${
+        darkMode 
+          ? "bg-gray-900" 
+          : "bg-gradient-to-b from-gray-50 to-white"
+      } overflow-hidden`}>
+        
         <div className="w-full max-w-7xl mx-auto">
           {/* Background elements */}
           <motion.div
@@ -82,9 +76,19 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="absolute top-10 left-10 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-            <div className="absolute top-40 right-10 w-72 h-72 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-            <div className="absolute bottom-20 left-1/2 w-80 h-80 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+            {darkMode ? (
+              <>
+                <div className="absolute top-10 left-10 w-64 h-64 bg-blue-900 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
+                <div className="absolute top-40 right-10 w-72 h-72 bg-indigo-900 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+                <div className="absolute bottom-20 left-1/2 w-80 h-80 bg-purple-900 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000"></div>
+              </>
+            ) : (
+              <>
+                <div className="absolute top-10 left-10 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+                <div className="absolute top-40 right-10 w-72 h-72 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+                <div className="absolute bottom-20 left-1/2 w-80 h-80 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+              </>
+            )}
           </motion.div>
 
           {/* Content container */}
@@ -108,7 +112,9 @@ export default function Home() {
               </motion.h2>
 
               <motion.p
-                className="text-gray-600 text-base sm:text-lg md:text-xl mx-auto"
+                className={`text-base sm:text-lg md:text-xl mx-auto ${
+                  darkMode ? "text-gray-300" : "text-gray-600"
+                }`}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
@@ -148,13 +154,17 @@ export default function Home() {
               </motion.button>
 
               <motion.div
-                className="mt-4 flex items-center gap-2 text-sm text-gray-500 flex-wrap justify-center"
+                className={`mt-4 flex items-center gap-2 text-sm flex-wrap justify-center ${
+                  darkMode ? "text-gray-400" : "text-gray-500"
+                }`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8, duration: 0.5 }}
               >
                 <span>Tidak perlu login</span>
-                <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+                <div className={`w-1 h-1 rounded-full ${
+                  darkMode ? "bg-gray-600" : "bg-gray-400"
+                }`}></div>
                 <span>Bisa diakses dari semua perangkat</span>
               </motion.div>
             </motion.div>
@@ -199,16 +209,22 @@ export default function Home() {
 
                 {/* Glow effect behind laptop */}
                 <motion.div
-                  className="absolute inset-0 -z-10 bg-blue-500 rounded-xl blur-2xl opacity-20"
+                  className={`absolute inset-0 -z-10 rounded-xl blur-2xl opacity-20 ${
+                    darkMode ? "bg-indigo-900" : "bg-blue-500"
+                  }`}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 0.2, scale: 1 }}
                   transition={{ delay: 0.6, duration: 1 }}
                 />
               </motion.div>
 
-              {/* Floating Card 1 - Posisi disesuaikan */}
+              {/* Floating Card 1 */}
               <motion.div
-                className="absolute top-[15%] right-[0%] sm:right-[5%] bg-white rounded-xl shadow-lg p-3 flex items-center gap-2 border border-gray-100 backdrop-blur-sm bg-opacity-80"
+                className={`absolute top-[15%] right-[0%] sm:right-[5%] rounded-xl shadow-lg p-3 flex items-center gap-2 border backdrop-blur-sm bg-opacity-80 ${
+                  darkMode 
+                    ? "bg-gray-800 border-gray-700" 
+                    : "bg-white border-gray-100"
+                }`}
                 initial={{ opacity: 0, y: 40, x: 20 }}
                 animate={{ opacity: 1, y: 0, x: 0 }}
                 transition={{
@@ -223,23 +239,35 @@ export default function Home() {
                 }}
               >
                 <motion.div
-                  className="bg-blue-100 p-2 rounded-lg"
+                  className={`p-2 rounded-lg ${
+                    darkMode ? "bg-blue-900 bg-opacity-30" : "bg-blue-100"
+                  }`}
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
                   <UserIcon />
                 </motion.div>
                 <div className="text-left">
-                  <p className="font-medium text-xs text-gray-700">
+                  <p className={`font-medium text-xs ${
+                    darkMode ? "text-gray-300" : "text-gray-700"
+                  }`}>
                     Kami Online
                   </p>
-                  <p className="font-bold text-sm text-gray-900">24/7</p>
+                  <p className={`font-bold text-sm ${
+                    darkMode ? "text-white" : "text-gray-900"
+                  }`}>
+                    24/7
+                  </p>
                 </div>
               </motion.div>
 
-              {/* Floating Card 2 - Posisi disesuaikan */}
+              {/* Floating Card 2 */}
               <motion.div
-                className="absolute bottom-[25%] left-[0%] sm:left-[5%] bg-white rounded-xl shadow-lg p-3 flex items-center gap-2 border border-gray-100 backdrop-blur-sm bg-opacity-80"
+                className={`absolute bottom-[25%] left-[0%] sm:left-[5%] rounded-xl shadow-lg p-3 flex items-center gap-2 border backdrop-blur-sm bg-opacity-80 ${
+                  darkMode 
+                    ? "bg-gray-800 border-gray-700" 
+                    : "bg-white border-gray-100"
+                }`}
                 initial={{ opacity: 0, y: 40, x: -20 }}
                 animate={{ opacity: 1, y: 0, x: 0 }}
                 transition={{
@@ -254,17 +282,25 @@ export default function Home() {
                 }}
               >
                 <motion.div
-                  className="bg-amber-100 p-2 rounded-lg"
+                  className={`p-2 rounded-lg ${
+                    darkMode ? "bg-amber-900 bg-opacity-30" : "bg-amber-100"
+                  }`}
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
                 >
                   <StarIcon />
                 </motion.div>
                 <div className="text-left">
-                  <p className="font-medium text-xs text-gray-700">
+                  <p className={`font-medium text-xs ${
+                    darkMode ? "text-gray-300" : "text-gray-700"
+                  }`}>
                     Customer Rating
                   </p>
-                  <p className="font-bold text-sm text-gray-900">4.9/5.0</p>
+                  <p className={`font-bold text-sm ${
+                    darkMode ? "text-white" : "text-gray-900"
+                  }`}>
+                    4.9/5.0
+                  </p>
                 </div>
               </motion.div>
             </div>
