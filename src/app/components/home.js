@@ -54,15 +54,54 @@ const ArrowIcon = () => (
   </svg>
 );
 
+// Komponen untuk animasi mengetik
+const TypingText = ({ text, darkMode }) => {
+  const [displayedText, setDisplayedText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(prev => prev + text[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, 75); // Kecepatan mengetik
+
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, text]);
+
+  return (
+    <motion.h2
+      className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.1, duration: 0.6 }}
+    >
+      <span className="bg-gradient-to-r from-[#1f0057] to-[#b13781] dark:from-fuchsia-600 dark:to-[#b13781] bg-clip-text text-transparent">
+        {displayedText}
+      </span>
+      <motion.span
+        animate={{ opacity: [0, 1, 0] }}
+        transition={{ duration: 0.8, repeat: Infinity }}
+        className="ml-1"
+      >
+        |
+      </motion.span>
+    </motion.h2>
+  );
+};
+
 export default function Home({ darkMode }) {
+  const headingText = "Bisnis Anda Muncul Pertama Saat Mereka Googling";
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${
       darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-800"
     }`}
     >
+      <Navbar darkMode={darkMode} />
       
-      <section className={`flex flex-col items-center justify-start min-h-screen text-center px-4 sm:px-6 py-12 ${
+      <section className={`flex items-center justify-center min-h-[calc(100vh-80px)] text-center px-4 sm:px-6 py-12 ${
         darkMode 
           ? "bg-gray-900" 
           : "bg-gradient-to-b from-gray-50 to-white"
@@ -91,25 +130,16 @@ export default function Home({ darkMode }) {
             )}
           </motion.div>
 
-          {/* Content container */}
-          <div className="flex flex-col items-center w-full">
-            {/* Heading */}
+          {/* Content container - centered */}
+          <div className="flex flex-col items-center justify-center w-full h-full">
+            {/* Heading with typing animation */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="w-full max-w-3xl mb-8 px-4"
             >
-              <motion.h2
-                className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.6 }}
-              >
-                <span className="bg-gradient-to-r from-[#1f0057] to-[#b13781] dark:from-fuchsia-600 dark:to-[#b13781] bg-clip-text text-transparent">
-                  Bisnis Anda Muncul Pertama Saat Mereka Googling
-                </span>
-              </motion.h2>
+              <TypingText text={headingText} darkMode={darkMode} />
 
               <motion.p
                 className={`text-base sm:text-lg md:text-xl mx-auto ${
@@ -167,143 +197,7 @@ export default function Home({ darkMode }) {
                 }`}></div>
                 <span>Bisa diakses dari semua perangkat</span>
               </motion.div>
-            </motion.div>
-
-            {/* Laptop Image & Floating Cards */}
-            <div className="relative w-full max-w-4xl mx-auto px-4">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 0.7,
-                  delay: 0.4,
-                  ease: "easeOut",
-                }}
-                className="relative"
-              >
-                {/* Floating effect for laptop */}
-                <motion.div
-                  animate={{
-                    y: [0, -15, 0],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <div className="relative aspect-video w-full">
-                    <Image
-                      src="/assets/laptop.png"
-                      alt="Modern laptop showing dashboard"
-                      fill
-                      className="object-contain"
-                      priority
-                    />
-                  </div>
-                </motion.div>
-
-                {/* Glow effect behind laptop */}
-                <motion.div
-                  className={`absolute inset-0 -z-10 rounded-xl blur-2xl opacity-20 ${
-                    darkMode ? "bg-indigo-900" : "bg-blue-500"
-                  }`}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 0.2, scale: 1 }}
-                  transition={{ delay: 0.6, duration: 1 }}
-                />
-              </motion.div>
-
-              {/* Floating Card 1 */}
-              <motion.div
-                className={`absolute top-[15%] right-[0%] sm:right-[5%] rounded-xl shadow-lg p-3 flex items-center gap-2 border backdrop-blur-sm bg-opacity-80 ${
-                  darkMode 
-                    ? "bg-gray-800 border-gray-700" 
-                    : "bg-white border-gray-100"
-                }`}
-                initial={{ opacity: 0, y: 40, x: 20 }}
-                animate={{ opacity: 1, y: 0, x: 0 }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.6,
-                  type: "spring",
-                  stiffness: 120,
-                }}
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
-                }}
-              >
-                <motion.div
-                  className={`p-2 rounded-lg ${
-                    darkMode ? "bg-blue-900 bg-opacity-30" : "bg-blue-100"
-                  }`}
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <UserIcon />
-                </motion.div>
-                <div className="text-left">
-                  <p className={`font-medium text-xs ${
-                    darkMode ? "text-gray-300" : "text-gray-700"
-                  }`}>
-                    Kami Online
-                  </p>
-                  <p className={`font-bold text-sm ${
-                    darkMode ? "text-white" : "text-gray-900"
-                  }`}>
-                    24/7
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Floating Card 2 */}
-              <motion.div
-                className={`absolute bottom-[25%] left-[0%] sm:left-[5%] rounded-xl shadow-lg p-3 flex items-center gap-2 border backdrop-blur-sm bg-opacity-80 ${
-                  darkMode 
-                    ? "bg-gray-800 border-gray-700" 
-                    : "bg-white border-gray-100"
-                }`}
-                initial={{ opacity: 0, y: 40, x: -20 }}
-                animate={{ opacity: 1, y: 0, x: 0 }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.7,
-                  type: "spring",
-                  stiffness: 120,
-                }}
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
-                }}
-              >
-                <motion.div
-                  className={`p-2 rounded-lg ${
-                    darkMode ? "bg-amber-900 bg-opacity-30" : "bg-amber-100"
-                  }`}
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                >
-                  <StarIcon />
-                </motion.div>
-                <div className="text-left">
-                  <p className={`font-medium text-xs ${
-                    darkMode ? "text-gray-300" : "text-gray-700"
-                  }`}>
-                    Customer Rating
-                  </p>
-                  <p className={`font-bold text-sm ${
-                    darkMode ? "text-white" : "text-gray-900"
-                  }`}>
-                    4.9/5.0
-                  </p>
-                </div>
-              </motion.div>
-            </div>
+            </motion.div>     
           </div>
         </div>
       </section>
