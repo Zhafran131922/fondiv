@@ -99,45 +99,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
 
           {/* Toggle Language & Theme */}
           <div className="flex items-center gap-4">
-            {/* Language Toggle */}
-            <div className="hidden sm:flex">
-              <div
-                className="relative w-24 h-10 rounded-full cursor-pointer overflow-hidden"
-                onClick={toggleLang}
-              >
-                {/* Track */}
-                <div className={`absolute inset-0 ${darkMode ? 'bg-gray-700' : 'bg-gray-100'
-                  }`}></div>
 
-                {/* Text Labels */}
-                <div className="absolute inset-0 flex items-center justify-between px-2 z-10">
-                  <span className={`text-xs font-semibold ${lang === "ENG"
-                      ? 'text-white'
-                      : darkMode
-                        ? 'text-gray-400'
-                        : 'text-gray-500'
-                    }`}>
-                    ENG
-                  </span>
-                  <span className={`text-xs font-semibold ${lang === "IND"
-                      ? 'text-white'
-                      : darkMode
-                        ? 'text-gray-400'
-                        : 'text-gray-500'
-                    }`}>
-                    IND
-                  </span>
-                </div>
-
-                {/* Thumb */}
-                <div
-                  className={`absolute top-1 left-1 w-10 h-8 bg-gradient-to-r from-[#1f0057] to-[#b13781] rounded-full shadow-md transition-all duration-300 ${lang === "IND" ? "translate-x-[56px]" : "translate-x-0"
-                    }`}
-                ></div>
-              </div>
-            </div>
-
-            {/* Theme Toggle */}
             <button
               className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${darkMode
                   ? 'bg-gray-700 text-yellow-400 hover:bg-gray-600'

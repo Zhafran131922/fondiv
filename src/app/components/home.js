@@ -77,7 +77,9 @@ export default function Home({ darkMode }) {
       {/* Content */}
       <div className="text-center">
         <TypingText
-          text={"Bisnis Anda Muncul Pertama\nSaat Mereka Cari"}
+          text={
+            "Turn Your Love Story Into a Beautiful Digital Experience\nYour Guests Will Never Forget"
+          }
           darkMode={darkMode}
         />
 
@@ -86,8 +88,7 @@ export default function Home({ darkMode }) {
             darkMode ? "text-gray-300" : "text-gray-600"
           }`}
         >
-          Kami bantu Anda tampil di halaman pertama lewat website yang cepat,
-          elegan, dan SEO-friendly.
+         "From RSVP to love story, we design wedding websites that reflect your style fast, elegant, and stress-free"
         </p>
 
         <motion.button
@@ -101,7 +102,7 @@ export default function Home({ darkMode }) {
         >
           <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-out group-hover:scale-x-100 z-0" />
           <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
-            Konsultasi Gratis
+            Free Consultation
           </span>
         </motion.button>
       </div>

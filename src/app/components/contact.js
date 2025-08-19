@@ -13,7 +13,7 @@ import {
   Linkedin,
 } from "lucide-react";
 
-// ANIMASI UTAMA
+// MAIN ANIMATION
 const container = {
   hidden: {},
   show: {
@@ -77,7 +77,7 @@ export default function ContactUs({ darkMode }) {
     setIsSubmitting(true);
 
     setTimeout(() => {
-      alert("Pesan Anda telah terkirim! Kami akan segera menghubungi Anda.");
+      alert("Your message has been sent! We’ll get back to you soon.");
       setFormData({ name: "", email: "", subject: "", message: "" });
       setIsSubmitting(false);
     }, 1500);
@@ -93,24 +93,24 @@ export default function ContactUs({ darkMode }) {
         animate={isClient ? "show" : "hidden"}
         className="max-w-6xl mx-auto"
       >
-        {/* Judul dan Deskripsi */}
+        {/* Title and Description */}
         <motion.div variants={fadeInUp} className="text-center mb-16">
           <h1 className={`text-4xl md:text-5xl font-bold mb-6 ${
             darkMode ? "text-white" : "text-gray-900"
           }`}>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1f0057] to-[#b13781] dark:from-fuchsia-600 dark:to-[#b13781]">
-              Hubungi Kami
+              Contact Us
             </span>
           </h1>
           <p className={`text-xl max-w-2xl mx-auto ${
             darkMode ? "text-gray-300" : "text-gray-600"
           }`}>
-            Konsultasikan kebutuhan website Anda dengan tim kami
+            Let’s create a wedding invitation that everyone will remember.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Informasi Kontak */}
+          {/* Contact Information */}
           <motion.div 
             variants={fadeLeft} 
             className={`rounded-2xl shadow-xl p-8 md:p-10 ${
@@ -122,19 +122,19 @@ export default function ContactUs({ darkMode }) {
                 darkMode ? "text-white" : "text-gray-900"
               }`}>
                 <div className="w-2 h-8 bg-gradient-to-b from-[#1f0057] to-[#b13781] rounded-full"></div>
-                Informasi Kontak
+                Contact Information
               </h2>
 
               <div className="space-y-6">
                 {[
                   {
                     icon: <MapPin className="w-6 h-6" />,
-                    title: "Lokasi",
+                    title: "Location",
                     value: "Semarang, Indonesia",
                   },
                   {
                     icon: <Phone className="w-6 h-6" />,
-                    title: "Telepon",
+                    title: "Phone",
                     value: "+62 813-2925-1543",
                   },
                   {
@@ -144,8 +144,8 @@ export default function ContactUs({ darkMode }) {
                   },
                   {
                     icon: <Clock className="w-6 h-6" />,
-                    title: "Jam Operasional",
-                    value: "Senin - Jumat, 09:00 - 17:00",
+                    title: "Business Hours",
+                    value: "Mon - Fri, 09:00 AM - 05:00 PM",
                   },
                 ].map((item, index) => (
                   <motion.div
@@ -178,7 +178,7 @@ export default function ContactUs({ darkMode }) {
                 darkMode ? "text-white" : "text-gray-900"
               }`}>
                 <div className="w-2 h-8 bg-gradient-to-b from-[#1f0057] to-[#b13781] rounded-full"></div>
-                Ikuti Kami
+                Follow Us
               </h2>
 
               <div className="flex gap-4">
@@ -215,32 +215,32 @@ export default function ContactUs({ darkMode }) {
             </div>
           </motion.div>
 
-          {/* Form Kontak */}
+          {/* Contact Form */}
           <motion.div 
             variants={fadeRight} 
             className="bg-gradient-to-br from-[#1f0057] to-[#b13781] rounded-2xl shadow-xl p-8 md:p-10"
           >
-            <h2 className="text-2xl font-bold text-white mb-8">Kirim Pesan</h2>
+            <h2 className="text-2xl font-bold text-white mb-8">Send a Message</h2>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {[
                 {
                   id: "name",
-                  label: "Nama",
+                  label: "Name",
                   type: "text",
-                  placeholder: "Masukkan nama anda",
+                  placeholder: "Enter your name",
                 },
                 {
                   id: "email",
                   label: "Email",
                   type: "email",
-                  placeholder: "Masukkan email Anda",
+                  placeholder: "Enter your email",
                 },
                 {
                   id: "subject",
-                  label: "Subjek",
+                  label: "Subject",
                   type: "text",
-                  placeholder: "Masukkan subjek pesan",
+                  placeholder: "Enter the subject",
                 },
               ].map((input, i) => (
                 <motion.div key={i} variants={fadeInUp}>
@@ -267,7 +267,7 @@ export default function ContactUs({ darkMode }) {
 
               <motion.div variants={fadeInUp}>
                 <label htmlFor="message" className="block text-sm font-medium text-indigo-100 mb-2">
-                  Pesan
+                  Message
                 </label>
                 <textarea
                   id="message"
@@ -275,7 +275,7 @@ export default function ContactUs({ darkMode }) {
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
-                  placeholder="Tulis pesan Anda di sini..."
+                  placeholder="Write your message here..."
                   className="w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl py-4 px-5 text-white placeholder:text-indigo-200 focus:outline-none focus:ring-2 focus:ring-white/50"
                   required
                 ></textarea>
@@ -315,11 +315,11 @@ export default function ContactUs({ darkMode }) {
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                       ></path>
                     </svg>
-                    Mengirim...
+                    Sending...
                   </>
                 ) : (
                   <>
-                    <span>Kirim Pesan</span>
+                    <span>Send Message</span>
                     <Send className="w-5 h-5" />
                   </>
                 )}

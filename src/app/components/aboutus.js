@@ -1,39 +1,41 @@
-'use client';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { CheckCircle2 } from 'lucide-react';
+"use client";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { CheckCircle2 } from "lucide-react";
 
-export default function AboutUs({ darkMode }) {  // Receive darkMode as prop
+export default function AboutUs({ darkMode }) {
+  // Receive darkMode as prop
   const bulletPoints = [
-    "Pengembangan Web Kustom",
-    "Solusi Aplikasi Mobile",
-    "Arsitektur yang Aman & Skalabel",
-    "Proses Pengembangan Agile",
-    "Desain UI/UX yang Unggul",
-    "Dukungan Proyek Menyeluruh"
+    "Custom Wedding Website Development",
+    "Mobile-Friendly & Responsive Design",
+    "Secure & Reliable Hosting",
+    "Smooth and Fast Performance",
+    "Elegant UI/UX Tailored for Weddings",
+    "Complete Support from Start to Finish",
   ];
 
   const container = {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.12
-      }
-    }
+        staggerChildren: 0.12,
+      },
+    },
   };
 
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   return (
-    <section className={`w-full py-20 px-4 sm:px-6 lg:px-12 overflow-hidden transition-colors duration-300 ${
-      darkMode 
-        ? "bg-gradient-to-br from-gray-800 to-gray-900" 
-        : "bg-gradient-to-br from-[#f8f5ff] to-white"
-    }`}>
-
+    <section
+      className={`w-full py-20 px-4 sm:px-6 lg:px-12 overflow-hidden transition-colors duration-300 ${
+        darkMode
+          ? "bg-gradient-to-br from-gray-800 to-gray-900"
+          : "bg-gradient-to-br from-[#f8f5ff] to-white"
+      }`}
+    >
       <motion.div
         className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
         variants={container}
@@ -43,9 +45,11 @@ export default function AboutUs({ darkMode }) {  // Receive darkMode as prop
       >
         {/* Kiri - Gambar */}
         <motion.div variants={fadeUp} className="relative group">
-          <div className={`relative rounded-2xl overflow-hidden shadow-2xl border-8 ${
-            darkMode ? "border-gray-700" : "border-white"
-          } transform group-hover:rotate-1 transition-transform duration-500`}>
+          <div
+            className={`relative rounded-2xl overflow-hidden shadow-2xl border-8 ${
+              darkMode ? "border-gray-700" : "border-white"
+            } transform group-hover:rotate-1 transition-transform duration-500`}
+          >
             <Image
               src="/assets/about.png"
               alt="Tim Pengembangan Web dan Mobile"
@@ -79,20 +83,34 @@ export default function AboutUs({ darkMode }) {  // Receive darkMode as prop
             variants={fadeUp}
             whileHover={{ scale: 1.1 }}
           >
-            <div className={`p-3 rounded-lg ${
-              darkMode ? "bg-blue-900 bg-opacity-30" : "bg-blue-100"
-            }`}>
-              <div className={`font-bold text-xl ${
-                darkMode ? "text-blue-300" : "text-blue-600"
-              }`}>300+</div>
+            <div
+              className={`p-3 rounded-lg ${
+                darkMode ? "bg-blue-900 bg-opacity-30" : "bg-blue-100"
+              }`}
+            >
+              <div
+                className={`font-bold text-xl ${
+                  darkMode ? "text-blue-300" : "text-blue-600"
+                }`}
+              >
+                300+
+              </div>
             </div>
             <div>
-              <p className={`font-medium text-sm ${
-                darkMode ? "text-gray-200" : "text-gray-800"
-              }`}>Aplikasi Tersampaikan</p>
-              <p className={`text-xs ${
-                darkMode ? "text-gray-400" : "text-gray-500"
-              }`}>Web & Mobile</p>
+              <p
+                className={`font-medium text-sm ${
+                  darkMode ? "text-gray-200" : "text-gray-800"
+                }`}
+              >
+                App Delivered
+              </p>
+              <p
+                className={`text-xs ${
+                  darkMode ? "text-gray-400" : "text-gray-500"
+                }`}
+              >
+                Website
+              </p>
             </div>
           </motion.div>
         </motion.div>
@@ -101,13 +119,11 @@ export default function AboutUs({ darkMode }) {  // Receive darkMode as prop
         <motion.div variants={fadeUp}>
           <motion.span
             className={`inline-block px-4 py-1 rounded-full text-sm font-medium mb-4 tracking-wide shadow-lg ${
-              darkMode 
-                ? "bg-[#b13781] text-white" 
-                : "bg-[#1f0057] text-white"
+              darkMode ? "bg-[#b13781] text-white" : "bg-[#1f0057] text-white"
             }`}
             variants={fadeUp}
           >
-            Tentang Layanan Kami
+            Our Services
           </motion.span>
 
           <motion.h2
@@ -116,7 +132,15 @@ export default function AboutUs({ darkMode }) {  // Receive darkMode as prop
             }`}
             variants={fadeUp}
           >
-            Membangun <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1f0057] via-[#832889] to-[#b13781] dark:from-fuchsia-600 dark:to-[#b13781] animate-gradient-x bg-[length:200%_auto] bg-no-repeat">Aplikasi Web & Mobile Modern</span> untuk Mendukung Bisnis Anda
+            Say Goodbye to{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1f0057] via-[#832889] to-[#b13781] dark:from-fuchsia-600 dark:to-[#b13781] animate-gradient-x bg-[length:200%_auto] bg-no-repeat">
+              Boring Invites
+            </span>
+            , Hello to{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1f0057] via-[#832889] to-[#b13781] dark:from-fuchsia-600 dark:to-[#b13781] animate-gradient-x bg-[length:200%_auto] bg-no-repeat">
+              Stunning Wedding Websites
+            </span>{" "}
+            crafted to impress every guest
           </motion.h2>
 
           <motion.p
@@ -125,7 +149,9 @@ export default function AboutUs({ darkMode }) {  // Receive darkMode as prop
             }`}
             variants={fadeUp}
           >
-            Kami ahli dalam mengembangkan website dan aplikasi mobile berkinerja tinggi yang disesuaikan dengan kebutuhan bisnis Anda. Mulai dari strategi hingga peluncuran, tim kami memastikan pengalaman digital yang skalabel, aman, dan menarik.
+            We specialize in crafting elegant wedding websites that capture your
+            love story. From concept to launch, we deliver a seamless, fast, and
+            unforgettable digital experience.
           </motion.p>
 
           <motion.p
@@ -134,7 +160,9 @@ export default function AboutUs({ darkMode }) {  // Receive darkMode as prop
             }`}
             variants={fadeUp}
           >
-            Apakah Anda membutuhkan platform perusahaan, CMS kustom, atau aplikasi yang menonjol di App Store—kami siap membantu dengan metodologi terbukti dan teknologi terkini.
+            Whether you need a personalized wedding website, a custom RSVP
+            system, or an interactive digital invitation our team delivers
+            stunning solutions using the latest technology.
           </motion.p>
 
           {/* Poin-poin layanan */}
@@ -148,10 +176,15 @@ export default function AboutUs({ darkMode }) {  // Receive darkMode as prop
                 className="flex items-start gap-3"
                 variants={fadeUp}
               >
-                <CheckCircle2 className={`mt-1 flex-shrink-0 ${
-                  darkMode ? "text-green-400" : "text-green-500"
-                }`} size={20} />
-                <p className={darkMode ? "text-gray-200" : "text-gray-700"}>{point}</p>
+                <CheckCircle2
+                  className={`mt-1 flex-shrink-0 ${
+                    darkMode ? "text-green-400" : "text-green-500"
+                  }`}
+                  size={20}
+                />
+                <p className={darkMode ? "text-gray-200" : "text-gray-700"}>
+                  {point}
+                </p>
               </motion.div>
             ))}
           </motion.div>
