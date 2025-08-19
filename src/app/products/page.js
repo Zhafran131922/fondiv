@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/navbar";
 import { products } from "./product";
 import Image from "next/image";
-
+import Footer from "../components/footer";
 export default function HomePage() {
   const [darkMode, setDarkMode] = useState(false);
 
@@ -134,6 +134,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <Footer darkMode={darkMode} />
     </div>
   );
 }
