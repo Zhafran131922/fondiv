@@ -11,16 +11,24 @@ export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
-  // Check for user's preferred color scheme
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setDarkMode(isDark);
+    if (typeof window !== "undefined") {
+      // Check localStorage first
+      const savedMode = localStorage.getItem("darkMode");
+      if (savedMode !== null) {
+        setDarkMode(savedMode === "true");
+      } else {
+        // Fallback to system preference
+        const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        setDarkMode(isDark);
+      }
     }
   }, []);
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    localStorage.setItem("darkMode", newMode);
   };
 
   const openModal = (project) => {

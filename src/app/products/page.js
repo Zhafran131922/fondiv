@@ -2,25 +2,33 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/navbar";
 import { products } from "./product";
+import Image from "next/image";
 
 export default function HomePage() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setDarkMode(isDark);
+      const savedMode = localStorage.getItem("darkMode");
+      if (savedMode !== null) {
+        setDarkMode(savedMode === "true");
+      } else {
+        const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        setDarkMode(isDark);
+      }
     }
   }, []);
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    localStorage.setItem("darkMode", newMode);
   };
 
   return (
     <div
       className={`min-h-screen transition-colors duration-300 ${
-        darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-800"
+        darkMode ? "bg-gray-900 text-gray-100" : "bg-gradient-to-br from-white to-purple-50 text-gray-800"
       }`}
     >
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
@@ -28,10 +36,20 @@ export default function HomePage() {
       <section className="px-4 py-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-[#1f0057] to-[#b13781]">
+            <h1 className={`text-4xl font-bold mb-3 
+             ${
+              darkMode
+                ? "text-white"
+                : "bg-clip-text text-transparent bg-gradient-to-r from-[#1f0057] to-[#b13781]"
+            }`}>
               Exclusive Products
             </h1>
-            <p className="text-lg max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+            <p className={`text-lg max-w-2xl mx-auto
+            ${
+              darkMode
+                ? "text-gray-300"
+                : "text-gray-600"
+            }`}>
               Discover our premium collection of carefully crafted products
               designed for excellence
             </p>
@@ -41,19 +59,21 @@ export default function HomePage() {
             {products.map((product, index) => (
               <div
                 key={index}
-                className={`group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg 
-                  transition-all duration-300 hover:shadow-xl hover:-translate-y-2
+                className={`group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2
                   ${
                     darkMode
-                      ? "border border-gray-700"
-                      : "border border-gray-100"
+                      ? "bg-gray-800/80 backdrop-blur-sm border border-gray-700 shadow-lg"
+                      : "bg-white/30 backdrop-blur-sm border border-white/20 shadow-lg hover:shadow-xl"
                   }`}
               >
-                <div className="relative overflow-hidden">
-                  <img
+                {/* 16:9 Image Container */}
+                <div className="relative aspect-w-16 aspect-h-9 w-full overflow-hidden">
+                  <Image
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-105"
+                    width={640}
+                    height={360}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
 
@@ -74,7 +94,7 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-5 h-12 overflow-hidden">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-5 line-clamp-2">
                     {product.description}
                   </p>
 
@@ -90,8 +110,12 @@ export default function HomePage() {
                       href={product.liveDemoLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-gray-100 dark:bg-gray-700 text-center py-3 rounded-lg 
-      hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors font-medium"
+                      className={`flex-1 text-center py-3 rounded-lg font-medium transition-colors
+                        ${
+                          darkMode
+                            ? "bg-gray-700 hover:bg-gray-600"
+                            : "bg-gray-200/90 hover:bg-gray-300"
+                        }`}
                     >
                       Live Demo
                     </a>
@@ -99,8 +123,7 @@ export default function HomePage() {
                       href={product.buyNowLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-gradient-to-r from-[#1f0057] to-[#b13781] text-white text-center py-3 rounded-lg 
-      hover:opacity-90 transition-all font-medium shadow-lg hover:shadow-xl"
+                      className="flex-1 bg-gradient-to-r from-[#1f0057] to-[#b13781] text-white text-center py-3 rounded-lg hover:opacity-90 transition-all font-medium shadow-lg hover:shadow-xl"
                     >
                       Buy Now
                     </a>
