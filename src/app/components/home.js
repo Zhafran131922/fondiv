@@ -90,7 +90,6 @@ export default function Home({ darkMode }) {
         >
          &quot;From RSVP to love story, we design wedding websites that reflect your style fast, elegant, and stress-free.&quot;
         </p>
-
         <motion.button
           whileHover={{
             scale: 1.05,
