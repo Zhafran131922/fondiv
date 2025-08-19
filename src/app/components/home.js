@@ -88,7 +88,7 @@ export default function Home({ darkMode }) {
             darkMode ? "text-gray-300" : "text-gray-600"
           }`}
         >
-         "From RSVP to love story, we design wedding websites that reflect your style fast, elegant, and stress-free"
+         &quot;From RSVP to love story, we design wedding websites that reflect your style fast, elegant, and stress-free.&quot;
         </p>
 
         <motion.button
