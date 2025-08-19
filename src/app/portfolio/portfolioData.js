@@ -94,9 +94,7 @@ export const projects = [
       "Secure user authentication"
     ],
     images: [
-      "/assets/projects/mitsubishi-1.png",
-      "/assets/projects/mitsubishi-2.png",
-      "/assets/projects/mitsubishi-3.png"
+      "/assets/projects/mitsubishi.jpg",
     ],
     liveUrl: "#",
     codeUrl: "#"
@@ -114,16 +112,14 @@ export const projects = [
       "Alert system for plant condition"
     ],
     images: [
-      "/assets/projects/smartfarming-1.png",
-      "/assets/projects/smartfarming-2.png",
-      "/assets/projects/smartfarming-3.png"
+      "/assets/projects/smartfarm.jpg",
     ],
     liveUrl: "#",
     codeUrl: "#"
   },
   {
     title: "Proposalify",
-    client: "Internal Project",
+    client: "Lecturer Internal Project",
     year: "2025",
     description: "A website that allows users to quickly and easily create professional proposals.",
     tech: ["React", "Express.js", "MongoDB"],
@@ -134,16 +130,14 @@ export const projects = [
       "User login and proposal history"
     ],
     images: [
-      "/assets/projects/proposalify-1.png",
-      "/assets/projects/proposalify-2.png",
-      "/assets/projects/proposalify-3.png"
+      "/assets/projects/proposal.jpg",
     ],
     liveUrl: "#",
     codeUrl: "#"
   },
   {
     title: "Smart Biz",
-    client: "SMEs",
+    client: "Capstone",
     year: "2025",
     description: "Smart Biz is a mobile app for recording business income and expenses in a simple and efficient way.",
     tech: ["Kotlin", "Express.js", "MySQL"],
@@ -154,9 +148,7 @@ export const projects = [
       "Cloud sync with Express.js server"
     ],
     images: [
-      "/assets/projects/smartbiz-1.png",
-      "/assets/projects/smartbiz-2.png",
-      "/assets/projects/smartbiz-3.png"
+      "/assets/projects/smartbiz.jpg",
     ],
     liveUrl: "#",
     codeUrl: "#"

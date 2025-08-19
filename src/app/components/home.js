@@ -15,11 +15,10 @@ const TypingText = ({ text, darkMode }) => {
         const timeout = setTimeout(() => {
           setDisplayedText((prev) => prev + lines[currentLine][currentIndex]);
           setCurrentIndex((prev) => prev + 1);
-        }, 75); // Typing speed
+        }, 75); 
 
         return () => clearTimeout(timeout);
       } else if (currentLine < lines.length - 1) {
-        // Move to next line after a slight delay
         const lineBreakTimeout = setTimeout(() => {
           setDisplayedText((prev) => prev + "\n");
           setCurrentLine((prev) => prev + 1);
