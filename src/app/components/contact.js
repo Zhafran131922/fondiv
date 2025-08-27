@@ -135,12 +135,12 @@ export default function ContactUs({ darkMode }) {
                   {
                     icon: <Phone className="w-6 h-6" />,
                     title: "Phone",
-                    value: "+62 813-2925-1543",
+                    value: "+62 851-3858-3134",
                   },
                   {
                     icon: <Mail className="w-6 h-6" />,
                     title: "Email",
-                    value: "fondivofficial@gmail.com",
+                    value: "teamfondiv@gmail.com",
                   },
                   {
                     icon: <Clock className="w-6 h-6" />,
@@ -183,22 +183,22 @@ export default function ContactUs({ darkMode }) {
 
               <div className="flex gap-4">
                 {[
-                  {
-                    icon: <Facebook className="w-6 h-6" />,
-                    color: "bg-blue-600",
-                  },
-                  {
-                    icon: <Twitter className="w-6 h-6" />,
-                    color: "bg-sky-400",
-                  },
+                  // {
+                  //   icon: <Facebook className="w-6 h-6" />,
+                  //   color: "bg-blue-600",
+                  // },
+                  // {
+                  //   icon: <Twitter className="w-6 h-6" />,
+                  //   color: "bg-sky-400",
+                  // },
                   {
                     icon: <Instagram className="w-6 h-6" />,
                     color: "bg-gradient-to-r from-amber-500 to-fuchsia-600",
                   },
-                  {
-                    icon: <Linkedin className="w-6 h-6" />,
-                    color: "bg-blue-700",
-                  },
+                  // {
+                  //   icon: <Linkedin className="w-6 h-6" />,
+                  //   color: "bg-blue-700",
+                  // },
                 ].map((social, idx) => (
                   <motion.a
                     key={idx}

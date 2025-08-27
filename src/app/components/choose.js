@@ -1,67 +1,93 @@
 "use client";
 import { motion } from "framer-motion";
-import { Clock, Smartphone, Share2, Music, MapPin, Gift, Globe, Heart, Camera, Video, MessageSquare, Layers } from "lucide-react";
+import {
+  Code,
+  Smartphone,
+  Bot,
+  Palette,
+  PenTool,
+  Presentation,
+  Search,
+  Server,
+  Shuffle,
+  Rocket,
+  Globe,
+  Heart,
+  Plug,
+} from "lucide-react";
 
 const features = [
   {
-    title: "Countdown Timer",
-    description: "Never miss your big day! Keep track with an elegant countdown.",
-    icon: <Clock className="w-6 h-6" />,
+    title: "Web Development",
+    description:
+      "Build modern, fast, and secure websites using the latest frameworks and best practices.",
+    icon: <Code className="w-6 h-6" />,
   },
   {
-    title: "Modern & Responsive Design",
-    description: "Say goodbye to boring invites. Make it wow on any device!",
+    title: "Mobile App Development",
+    description:
+      "Create responsive, high-performance mobile apps for Android and iOS.",
     icon: <Smartphone className="w-6 h-6" />,
   },
   {
-    title: "WhatsApp Broadcast",
-    description: "Share your wedding invite instantly via WhatsApp broadcast.",
-    icon: <Share2 className="w-6 h-6" />,
+    title: "Machine Learning & AI",
+    description:
+      "Design ML pipelines, model training, and deployment to solve real business problems.",
+    icon: <Bot className="w-6 h-6" />,
   },
   {
-    title: "Photo Gallery",
-    description: "Showcase your sweetest moments in a beautiful photo slideshow.",
-    icon: <Camera className="w-6 h-6" />,
+    title: "UI/UX Design",
+    description:
+      "Craft user-centered designs, wireframes, and prototypes that convert and delight.",
+    icon: <Palette className="w-6 h-6" />,
   },
   {
-    title: "Live Streaming",
-    description: "Let your loved ones join virtually from anywhere in the world.",
-    icon: <Video className="w-6 h-6" />,
+    title: "Graphic Design",
+    description:
+      "Visual assets, social media creatives, and marketing materials with consistent branding.",
+    icon: <PenTool className="w-6 h-6" />,
   },
   {
-    title: "Background Music",
-    description: "Set the mood with your favorite romantic background music.",
-    icon: <Music className="w-6 h-6" />,
-  },
-  {
-    title: "Digital Envelope",
-    description: "Guests can easily send digital gifts securely and quickly.",
-    icon: <Gift className="w-6 h-6" />,
-  },
-  {
-    title: "Multi-language Support",
-    description: "Switch between English and Bahasa for a personalized experience.",
+    title: "Logo & Branding",
+    description:
+      "Brand identity systems—logos, color palettes, and guidelines that stand out.",
     icon: <Globe className="w-6 h-6" />,
   },
   {
-    title: "Love Stories",
-    description: "Tell your love journey with a beautiful story section.",
+    title: "Presentation / PowerPoint Design",
+    description:
+      "Clean, persuasive slides that communicate ideas clearly for pitches and events.",
+    icon: <Presentation className="w-6 h-6" />,
+  },
+  {
+    title: "SEO Optimization",
+    description:
+      "On-page SEO, technical audits, and content strategy to improve discoverability.",
+    icon: <Search className="w-6 h-6" />,
+  },
+  {
+    title: "Scalability & Performance",
+    description:
+      "Optimize speed, caching, and architecture so products scale smoothly.",
+    icon: <Rocket className="w-6 h-6" />,
+  },
+  {
+    title: "Flexibility & Modular Architecture",
+    description:
+      "Composable, maintainable codebases with reusable components and clear boundaries.",
+    icon: <Shuffle className="w-6 h-6" />,
+  },
+  {
+    title: "API Integration & Back-End",
+    description:
+      "REST/GraphQL APIs, databases, and cloud deployment for reliable systems.",
+    icon: <Server className="w-6 h-6" />,
+  },
+  {
+    title: "Wedding Website",
+    description:
+      "Personalized wedding sites—gallery, RSVP, countdown, and map in one place.",
     icon: <Heart className="w-6 h-6" />,
-  },
-  {
-    title: "Location Navigation",
-    description: "Complete maps so your guests never get lost on the way.",
-    icon: <MapPin className="w-6 h-6" />,
-  },
-  {
-    title: "Guest Book & Wishes",
-    description: "Let guests share their heartfelt messages and blessings.",
-    icon: <MessageSquare className="w-6 h-6" />,
-  },
-  {
-    title: "Unlimited Versions",
-    description: "Need updates? No problem! Create as many versions as you want.",
-    icon: <Layers className="w-6 h-6" />,
   },
 ];
 
@@ -81,7 +107,7 @@ export default function FeaturesSection({ darkMode }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Best Feature
+          Capabilities & Services
         </motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

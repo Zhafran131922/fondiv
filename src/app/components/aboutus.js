@@ -6,7 +6,7 @@ import { CheckCircle2 } from "lucide-react";
 export default function AboutUs({ darkMode }) {
   // Receive darkMode as prop
   const bulletPoints = [
-    "Custom Wedding Website Development",
+    "Custom Business Website Development",
     "Mobile-Friendly & Responsive Design",
     "Secure & Reliable Hosting",
     "Smooth and Fast Performance",
@@ -102,14 +102,14 @@ export default function AboutUs({ darkMode }) {
                   darkMode ? "text-gray-200" : "text-gray-800"
                 }`}
               >
-                App Delivered
+                Aplikasi Tersampaikan
               </p>
               <p
                 className={`text-xs ${
                   darkMode ? "text-gray-400" : "text-gray-500"
                 }`}
               >
-                Website
+                Web & Mobile
               </p>
             </div>
           </motion.div>
@@ -123,7 +123,7 @@ export default function AboutUs({ darkMode }) {
             }`}
             variants={fadeUp}
           >
-            Our Services
+            Tentang Layanan Kami
           </motion.span>
 
           <motion.h2
@@ -132,15 +132,11 @@ export default function AboutUs({ darkMode }) {
             }`}
             variants={fadeUp}
           >
-            Say Goodbye to{" "}
+            Membangun{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1f0057] via-[#832889] to-[#b13781] dark:from-fuchsia-600 dark:to-[#b13781] animate-gradient-x bg-[length:200%_auto] bg-no-repeat">
-              Boring Invites
-            </span>
-            , Hello to{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1f0057] via-[#832889] to-[#b13781] dark:from-fuchsia-600 dark:to-[#b13781] animate-gradient-x bg-[length:200%_auto] bg-no-repeat">
-              Stunning Wedding Websites
+              Aplikasi Web & Mobile Modern
             </span>{" "}
-            crafted to impress every guest
+            untuk Mendukung Bisnis Anda
           </motion.h2>
 
           <motion.p
@@ -149,9 +145,10 @@ export default function AboutUs({ darkMode }) {
             }`}
             variants={fadeUp}
           >
-            We specialize in crafting elegant wedding websites that capture your
-            love story. From concept to launch, we deliver a seamless, fast, and
-            unforgettable digital experience.
+            Kami ahli dalam mengembangkan website dan aplikasi mobile berkinerja
+            tinggi yang disesuaikan dengan kebutuhan bisnis Anda. Mulai dari
+            strategi hingga peluncuran, tim kami memastikan pengalaman digital
+            yang skalabel, aman, dan menarik.
           </motion.p>
 
           <motion.p
@@ -160,9 +157,9 @@ export default function AboutUs({ darkMode }) {
             }`}
             variants={fadeUp}
           >
-            Whether you need a personalized wedding website, a custom RSVP
-            system, or an interactive digital invitation our team delivers
-            stunning solutions using the latest technology.
+            Apakah Anda membutuhkan platform perusahaan, CMS kustom, atau
+            aplikasi yang menonjol di App Store—kami siap membantu dengan
+            metodologi terbukti dan teknologi terkini.
           </motion.p>
 
           {/* Poin-poin layanan */}

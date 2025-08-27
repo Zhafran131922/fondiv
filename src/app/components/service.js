@@ -4,30 +4,30 @@ import { useInView } from "react-intersection-observer";
 
 const services = [
   {
-    title: "Step 1: Choose Your Design",
+    title: "Step 1: Chat With Us",
     description:
-      "Pick your favorite wedding website design from our stunning collection, or request a custom theme tailored to your love story.",
+      "Discuss your website needs with our team via WhatsApp. Share details, inspirations, and your preferences so we can better understand your vision.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3h6m-6 3h3m-6 6.75h13.5A2.25 2.25 0 0021 18.75V5.25A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25v13.5A2.25 2.25 0 005.25 21z" />
       </svg>
     ),
   },
   {
-    title: "Step 2: Chat With Us",
-    description: "Send your details via WhatsApp—your names, wedding date, venue, and any special requests. Our team will assist you immediately.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-      </svg>
-    ),
-  },
-  {
-    title: "Step 3: Pay After It's Ready",
-    description: "We’ll build your wedding website first. Once everything looks perfect and you approve it, then you make the payment—zero risk, total trust!",
+    title: "Step 2: Confirm UI/UX & Pay Deposit",
+    description: "Once the UI/UX concept is approved, make the deposit payment. Our team will immediately start building your website based on the agreed design.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8.25v7.5m0 0L9 12m3 3.75L15 12m-9.75 6.75h13.5A2.25 2.25 0 0021 16.5v-9a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 7.5v9a2.25 2.25 0 002.25 2.25z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Step 3: Revisions & Deadline",
+    description: "We provide up to 3 revisions. The project deadline will be set according to mutual agreement, ensuring everything matches your expectations.",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0A9 9 0 1112 3a9 9 0 019 9z" />
       </svg>
     ),
   },
@@ -55,7 +55,7 @@ export default function HowToOrder({ darkMode }) {
           >
             Just 3 Simple Steps to Your&nbsp;
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1f0057] to-[#b13781] dark:from-fuchsia-700 dark:to-[#b13781]">
-              Perfect Wedding Website
+              Custom Website
             </span>
           </motion.h2>
           <motion.p
@@ -64,7 +64,7 @@ export default function HowToOrder({ darkMode }) {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            No hassle, no stress—just follow these steps and let us handle the rest.
+            No hassle, no stress—just follow these steps and we’ll handle the rest.
           </motion.p>
         </motion.div>
 
